@@ -6,7 +6,7 @@ function Login({email,password}){
     const submitRequest = (e) => {
         e.preventDefault()
      
-      axios.post(`https://scrive.com/api/v2/getpersonaltoken?email=kanhere.priya@gmail.com#password=Kanhere@123456'`)
+      axios.post(`/api/v2/getpersonaltoken?email=kanhere.priya@gmail.com&password=Kanhere@123456`)
       .then(res => {
         console.log(res);
         console.log(res.data);
