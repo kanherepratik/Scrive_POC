@@ -2,14 +2,26 @@ const streamify = require('stream-array');
 const  {createProxyMiddleware } = require('http-proxy-middleware');
 
 module.exports = function(app) {
+//   app.use(
+//     ['/api',"/auth/google"],
+//     createProxyMiddleware({
+//        target: 'https://scrive.com/',
+//        changeOrigin: true
+//     })
+//   );
   app.use(
-    ['/api',"/auth/google"],
-    createProxyMiddleware({
-       target: 'https://scrive.com/',
-       changeOrigin: true
+    createProxyMiddleware("/api", {
+      target: 'https://scrive.com/',
+      changeOrigin: true
     })
   );
-};
+  app.use(
+    createProxyMiddleware("/auth/google", {
+      target: 'https://scrive.com/',
+      changeOrigin: true
+    })
+  );
+ };
 
 
 /*
